@@ -1,8 +1,8 @@
-defmodule Grow.Farm.Garden do
+defmodule Grow.Garden.Plot do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "gardens" do
+  schema "plots" do
     field :name, :string
 
     belongs_to :user, Grow.Accounts.User
@@ -11,8 +11,8 @@ defmodule Grow.Farm.Garden do
   end
 
   @doc false
-  def changeset(garden, attrs) do
-    garden
+  def changeset(plot, attrs) do
+    plot
     |> cast(attrs, [:name])
     |> validate_required([:name])
     |> unsafe_validate_unique(:user_id, Grow.Repo)

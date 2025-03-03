@@ -93,14 +93,14 @@ defmodule Grow.AccountsTest do
       assert is_nil(user.password)
     end
 
-    test "creates a garden on the user account" do
+    test "creates a plot on the user account" do
       email = unique_user_email()
       {:ok, user} = Accounts.register_user(valid_user_attributes(email: email))
 
-      garden = Grow.Repo.one!(Ecto.assoc(user, :garden))
+      plot = Grow.Repo.one!(Ecto.assoc(user, :plot))
 
       assert user.email == email
-      assert %Grow.Farm.Garden{} = garden
+      assert %Grow.Garden.Plot{} = plot
     end
   end
 

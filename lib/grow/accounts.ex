@@ -81,7 +81,7 @@ defmodule Grow.Accounts do
          |> Repo.insert() do
       {:ok, user} ->
         user
-        |> Ecto.build_assoc(:garden, name: "My Garden")
+        |> Ecto.build_assoc(:plot, name: "My Garden")
         |> Repo.insert()
 
         {:ok, user}

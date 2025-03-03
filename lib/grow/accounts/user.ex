@@ -9,7 +9,7 @@ defmodule Grow.Accounts.User do
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
 
-    has_one :garden, Grow.Farm.Garden
+    has_one :plot, Grow.Garden.Plot
 
     timestamps(type: :utc_datetime)
   end
