@@ -75,9 +75,20 @@ defmodule Grow.Accounts do
 
   """
   def register_user(attrs) do
-    %User{}
-    |> User.registration_changeset(attrs)
-    |> Repo.insert()
+    # TODO: Clean this up
+    case %User{}
+         |> User.registration_changeset(attrs)
+         |> Repo.insert() do
+      {:ok, user} ->
+        user
+        |> Ecto.build_assoc(:garden, name: "My Garden")
+        |> Repo.insert()
+
+        {:ok, user}
+
+      {:error, changeset} ->
+        {:error, changeset}
+    end
   end
 
   @doc """
